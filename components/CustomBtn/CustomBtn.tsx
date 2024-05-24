@@ -7,10 +7,11 @@ interface Props {
   text: string,
   containerStyles: string,
   btnType?: "button" | "submit",
+  rightIcon?: string,
   handleClick?: MouseEventHandler<HTMLButtonElement>
 }
 
-export const CustomBtn = ({text, containerStyles, btnType, handleClick} : Props) => {
+export const CustomBtn = ({text, containerStyles, btnType, rightIcon, handleClick} : Props) => {
   return (
     <button
       disabled={false}
@@ -19,6 +20,11 @@ export const CustomBtn = ({text, containerStyles, btnType, handleClick} : Props)
       onClick={handleClick}
       >
         <span className={`flex-1`}>{text}</span>
+        {rightIcon &&
+          <div className="relative w-6 h-6">
+            <Image src={rightIcon} alt="icon btn" fill className="object-contain" />
+          </div>
+        }
     </button>
   )
 }

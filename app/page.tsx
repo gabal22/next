@@ -4,6 +4,7 @@ import { getCars } from "@/utils";
 export default async function Home() {
   const allCars = await getCars()
   const itsEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars
+  // console.log(allCars)
 
   return (
     <main className='overflow-hidden'>
@@ -23,7 +24,7 @@ export default async function Home() {
         {!itsEmpty ?
           <section>
             <div className="home__cars-wrapper">
-              {allCars.map(car => <CarCard />)}
+              {allCars.map(car => <CarCard car={car} />)}
             </div>
           </section>
           :
